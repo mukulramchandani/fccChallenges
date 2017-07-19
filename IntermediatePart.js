@@ -30,3 +30,66 @@ function diffArray(arr1, arr2) {
   return newArr;  //["piglet", 4]
 }
 diffArray([1, "calf", 3, "piglet"], [1, "calf", 3, 4]);
+
+// Roman numeral converter
+
+//Not my solution.Got it from forum.
+
+//this is a basic solution.
+function convertToRoman(num) {
+  var decimals = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
+  var romans = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];
+  var r = [];
+  for(var i = 0 ; i<decimals.length;i++){
+    while(decimals[i]<=num){
+      r.push(romans[i]);
+      num = num - decimals[i];
+    }
+  }
+  return r.join('');
+}
+
+convertToRoman(100);
+
+// Wherefore art thou
+// not my solution but learnt array.filter() a bit.
+function whatIsInAName(collection, source) {
+  // What's in a name?
+  var arr = [];
+  // Only change code below this line
+
+  var x = Object.keys(source);
+
+   arr = collection.filter(function(obj){
+     for(var i=0;i<x.length;i++){
+       if(!obj.hasOwnProperty(x[i]) || obj[x[i]] !== source[x[i]]){
+         return false;
+       }
+     }
+     return true;
+
+   });
+
+  // Only change code above this line
+  return arr;
+}
+
+whatIsInAName([{ "a": 1, "b": 2 }, { "a": 1 }, { "a": 1, "b": 2, "c": 2 }], { "a": 1, "c": 2 });
+
+ // Search and Replace..
+// Checking case was the main part.
+function myReplace(str, before, after) {
+  var y;
+  if((after.charCodeAt(0)>=65  && after.charCodeAt(0) <= 91 || before.charCodeAt(0)>=65  && before.charCodeAt(0) <= 91) &&
+        after.charAt() != after.charAt().toUpperCase()){
+    y = after.charAt().toUpperCase();
+   for(var i = 1;i<after.length;i++){
+     y = y + after.charAt(i);
+   }
+   return str.replace(before, y);
+ }
+
+  return str.replace(before, after);
+}
+
+myReplace("Let us go to the store", "store", "mall");
