@@ -18,7 +18,6 @@ sumAll([1, 4]);
 function diffArray(arr1, arr2) {
   var newArr = [];
   // Same, same; but different.
-  //
   var x = arr1.concat(arr2);
 
   for(var i = 0 ; i<x.length; i++){
@@ -93,3 +92,27 @@ function myReplace(str, before, after) {
 }
 
 myReplace("Let us go to the store", "store", "mall");
+
+//The PigLatin...
+//Most basic soln. Code can be optimized.
+
+function translatePigLatin(str) {
+  var x = str.split('');
+  var y  = [];
+  var vov = ['a','e','i','o','u'];
+  
+  for(var j = 0 ; j<vov.length;j++){
+     if(x.indexOf(vov[j]) === 0){
+    return x.join('') + 'way';
+  }
+  }
+    for(var i=0;i<x.length || i<5; i++){
+   if(x[i] != 'a' && x[i] != 'e' && x[i] != 'i' && x[i] != 'o' &&  x[i] != 'u'){
+     x.push(x[i]);
+     delete x[i];
+     }
+   else return x.join('') + 'ay';
+  }
+  
+}
+translatePigLatin("eight"); //returns 'eightway'
